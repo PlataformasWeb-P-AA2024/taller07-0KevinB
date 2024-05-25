@@ -9,22 +9,22 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Función para leer datos de un archivo
-def leer_datos_club(file_path):
+def leer_datos_club(ruta):
     clubs = []
-    with open(file_path, 'r') as file:
-        for line in file:
-            nombre, deporte, fundacion = line.strip().split(';')
+    with open(ruta, 'r') as archivo:
+        for linea in archivo:
+            nombre, deporte, fundacion = linea.strip().split(';')
             clubs.append(Club(nombre=nombre, deporte=deporte, fundacion=int(fundacion)))
     return clubs
 
-def leer_datos_jugador(file_path, session):
+def leer_datos_jugador(ruta, session):
     jugadores = []
-    with open(file_path, 'r') as file:
-        for line in file:
-            club_nombre, posicion, dorsal, nombre = line.strip().split(';')
-            club = session.query(Club).filter_by(nombre=club_nombre).one_or_none()
+    with open(ruta, 'r') as archivo:
+        for linea in archivo:
+            nombre_club, posicion, dorsal, nombre = linea.strip().split(';')
+            club = session.query(Club).filter_by(nombre=nombre_club).one_or_none()
             if club is None:
-                print(f"Error: No se encontró el club con nombre '{club_nombre}'")
+                print(f"Error: No se encontró el club con nombre '{nombre_club}'")
             else:
                 jugadores.append(Jugador(nombre=nombre, dorsal=int(dorsal), posicion=posicion, club=club))
     return jugadores
