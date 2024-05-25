@@ -18,11 +18,11 @@
 
 * Ejecutar los archivos en el orden especificado:
 ``` sh
-python genera_tablas.py
-python ingreso_datos.py
-python consulta_datos1.py
-python consulta_datos2.py
-python consulta_datos3.py
-python consulta_datos4.py
+python3 genera_tablas.py
+python3 ingreso_datos.py
+python3 consulta_datos1.py
+python3 consulta_datos2.py
+python3 consulta_datos3.py
+python3 consulta_datos4.py
 ```
 * Verificar que la información obtenida sea la correcta
